@@ -1,0 +1,35 @@
+type User {
+    id: ID!
+    name: String!
+    username: String!
+    email: String!
+}
+
+type Post {
+    id: ID!
+    title: String!
+    body: String!
+    userId: Long!
+}
+
+type Comment {
+    id: ID!
+    name: String!
+    email: String!
+    body: String!
+    postId: Long!
+}
+
+# The Root Query for the application
+type Query {
+	getUserById(id:Int!): User
+    getPostById(id:Int!): Post
+    getCommentById(id:Int!): Comment
+    getCommentsFromPostId(id:Int!): [Comment]
+}
+
+# Mutation: to add entities
+type Mutation {
+	updatePost(id:Int!, title: String!, body: String!, userId: Long!): Post
+	deletePost(id:Int!): Boolean
+}
